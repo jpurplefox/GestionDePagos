@@ -36,6 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap',
+)
+
+TEMPLATE_DIRS = (
+    'Talleres/templates/',
 )
 
 MIDDLEWARE_CLASSES = (
