@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Talleres - {% block title %}{% endblock %}</title>
+	<title>Talleres - {% block head-title %}{% endblock %}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,6 +11,10 @@
 </head>
 <body>
 	{% include 'menu.html' %}
+	<div class="page-header">
+		<h1>{% block body-title %}{% endblock %}</h1>
+	</div>
+	{% include 'info_messages.html' %}
 	{% block content %}
 	{% endblock %}
 
