@@ -9,4 +9,5 @@ urlpatterns = patterns('',
 
     url(r'^$', HomeView.as_view()),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^clientes/', include('clientes.urls', namespace='clientes')),
 )

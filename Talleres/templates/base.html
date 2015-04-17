@@ -11,8 +11,9 @@
 </head>
 <body>
 	{% include 'menu.html' %}
+	{% block breadcrumb %}{% endblock %}
 	<div class="page-header">
-		<h1>{% block body-title %}{% endblock %}</h1>
+		<h1>{% block body-title %} Talleres {% endblock %}</h1>
 	</div>
 	{% include 'info_messages.html' %}
 	{% block content %}
