@@ -14,3 +14,6 @@ class Cliente(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('clientes:cliente_detail', args=[self.id])
+
+	class Meta:
+		ordering = ['nombre', 'apellido']
