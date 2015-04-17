@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 class Cliente(models.Model):
 	nombre = models.CharField(max_length=100)
 	apellido = models.CharField(max_length=100)
-	dni = models.DecimalField(max_digits=8, decimal_places=0)
+	dni = models.DecimalField(max_digits=8, decimal_places=0, verbose_name='DNI')
 	email = models.EmailField()
 	observaciones = models.TextField()
 

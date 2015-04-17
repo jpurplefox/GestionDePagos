@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head-title %} Clientes {% endblock %}
-{% block body-title %} Clientes {% endblock %}
+{% block body-title %} Clientes <a href="{% url 'clientes:cliente_create' %}" class="btn btn-primary">Nuevo</a>{% endblock %}
 
 {% block breadcrumb %}
 <ol class="breadcrumb">
@@ -10,20 +10,22 @@
 {% endblock %}
 
 {% block content %}
-<table>
-	<tr>
-		<th>Nombre</th>
-		<th>Email</th>
-		<th>DNI</th>
-	</tr>
-	<tr>
-		{% for cliente in clientes %}
+<div class="table-responsive">
+	<table class="table">
 		<tr>
-			<td><a href="{{cliente.get_absolute_url}}">{{cliente}}</a></td>
-			<td>{{cliente.email}}</td>
-			<td>{{cliente.dni}}</td>
+			<th>Nombre</th>
+			<th>Email</th>
+			<th>DNI</th>
 		</tr>
-		{% endfor %}
-	</tr>
-</table>
+		<tr>
+			{% for cliente in clientes %}
+			<tr>
+				<td><a href="{{cliente.get_absolute_url}}">{{cliente}}</a></td>
+				<td>{{cliente.email}}</td>
+				<td>{{cliente.dni}}</td>
+			</tr>
+			{% endfor %}
+		</tr>
+	</table>
+</div>
 {% endblock %}

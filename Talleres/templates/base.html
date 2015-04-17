@@ -10,14 +10,22 @@
 	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}">
 </head>
 <body>
-	{% include 'menu.html' %}
-	{% block breadcrumb %}{% endblock %}
-	<div class="page-header">
-		<h1>{% block body-title %} Talleres {% endblock %}</h1>
+	<div class="panel panel-default">
+	 	<div class="panel-body">
+			{% include 'menu.html' %}
+
+			{% block breadcrumb %}{% endblock %}
+
+			<div class="page-header">
+				<h1>{% block body-title %} Talleres {% endblock %}</h1>
+			</div>
+
+			{% include 'info_messages.html' %}
+			
+			{% block content %}
+			{% endblock %}
+		</div>
 	</div>
-	{% include 'info_messages.html' %}
-	{% block content %}
-	{% endblock %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>

@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block head-title %}{{cliente}}{% endblock %}
-{% block body-title %}{{cliente}} <a href="{% url 'clientes:cliente_update' cliente.id %}">Editar</a>{% endblock %}
+{% block body-title %}{{cliente}} <a href="{% url 'clientes:cliente_update' cliente.id %}" class="btn btn-primary">Editar</a>{% endblock %}
 
 {% block breadcrumb %}
 <ol class="breadcrumb">
-  <li><a href="{% url 'clientes:cliente_list' %}">Clientes</a></li>
-  <li class="active">{{cliente}}</li>
+	<li><a href="{% url 'clientes:cliente_list' %}">Clientes</a></li>
+	<li class="active">{{cliente}}</li>
 </ol>
 {% endblock %}
 
 {% block content %}
 <p><strong>Nombre: </strong>{{cliente.nombre}}</p>
-<p><strong>Apellido: </strong>{{cliente.apellidp}}</p>
+<p><strong>Apellido: </strong>{{cliente.apellido}}</p>
 <p><strong>DNI: </strong>{{cliente.dni}}</p>
 <p><strong>Observaciones: </strong>{{cliente.observaciones}}</p>
 {% endblock %}
