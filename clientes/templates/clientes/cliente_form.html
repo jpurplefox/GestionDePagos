@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
 {% block head-title %}Cliente - Nuevo{% endblock %}
-{% block body-title %}Cliente <small>Nuevo</small>{% endblock %}
+{% block body-title %}Cliente <small>{% if object.id %}{{object}}{% else %}Nuevo{% endif %}</small>{% endblock %}
 
 {% block breadcrumb %}
 <ol class="breadcrumb">
   <li><a href="{% url 'clientes:cliente_list' %}">Clientes</a></li>
+  {% if object.id %}
+  <li><a href="{{ object.get_absolute_url }}">{{object}}</a></li>
+  <li class="active">Editar</li>
+  {% else %}
   <li class="active">Nuevo</li>
+  {% endif %}
 </ol>
 {% endblock %}
 
