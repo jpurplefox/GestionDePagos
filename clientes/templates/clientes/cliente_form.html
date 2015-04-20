@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<form action="" method="POST">
+<form action="" method="GET" class="col-md-6">
 	{% csrf_token %}
 	{% include 'helpers/form.html' %}
 	<input type="submit" value="Confirmar" class="btn btn-primary">

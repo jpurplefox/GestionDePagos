@@ -104,3 +104,7 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+NUMBER_GROUPING = 3
+
+USE_THOUSAND_SEPARATOR = True

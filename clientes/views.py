@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
+from django.db.models import Q
 
 from .models import Cliente
 from .forms import ClienteForm
@@ -36,3 +37,22 @@ class ClienteListView(ListView):
     model = Cliente
     context_object_name = 'clientes'
     template_name = 'clientes/cliente_list.html'
+
+    def get_queryset(self):
+        queryset = super(ClienteListView, self).get_queryset()
+        search = self.request.GET.get('search')
+
+        if search:
+            queryset = queryset.filter(
+                Q(nombre__contains=search) |
+                Q(apellido__contains=search) |
+                Q(email__contains=search) |
+                Q(dni__contains=search)
+            )
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(ClienteListView, self).get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search')
+        return context
