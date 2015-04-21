@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head-title %}Marca - Nuevo{% endblock %}
+{% block body-title %}Marca <small>{% if object.id %}{{object}}{% else %}Nuevo{% endif %}</small>{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li><a href="{% url 'vehiculos:marca_list' %}">Marcas</a></li>
+  {% if object.id %}
+  <li><a href="{{ object.get_absolute_url }}">{{object}}</a></li>
+  <li class="active">Editar</li>
+  {% else %}
+  <li class="active">Nuevo</li>
+  {% endif %}
+</ol>
+{% endblock %}
+
+{% block content %}
+<form action="" method="POST" class="col-md-6">
+	{% csrf_token %}
+	{% include 'helpers/form.html' %}
+	<input type="submit" value="Confirmar" class="btn btn-primary">
+</form>
+{% endblock %}

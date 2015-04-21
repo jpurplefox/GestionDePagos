@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head-title %}{{marca}}{% endblock %}
+{% block body-title %}{{marca}} <a href="{% url 'vehiculos:marca_update' marca.id %}" class="btn btn-primary">Editar</a>{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li><a href="{% url 'vehiculos:marca_list' %}">Marcas</a></li>
+	<li class="active">{{marca}}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-6">
+	<ul class="list-group">
+		<li class="list-group-item"><strong>Nombre</strong><span class="pull-right">{{marca.nombre}}</span></li>
+	</ul>
+</div>
+{% endblock %}

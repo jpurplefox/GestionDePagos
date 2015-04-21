@@ -1,0 +1,27 @@
+{% extends 'base/base_list.html' %}
+
+{% block head-title %} Marcas {% endblock %}
+{% block list-title %}
+Marcas <a href="{% url 'vehiculos:marca_create' %}" class="btn btn-primary">Nuevo</a>
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li class="active">Marcas</li>
+</ol>
+{% endblock %}
+
+{% block list_table %}
+<div class="table-responsive">
+	<table class="table">
+		<tr>
+			<th>Nombre</th>
+		</tr>
+		{% for marca in marcas %}
+		<tr>
+			<td><a href="{{marca.get_absolute_url}}">{{marca}}</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock %}

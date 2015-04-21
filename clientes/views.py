@@ -1,8 +1,6 @@
-from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
-from django.db.models import Q
 
 from .models import Cliente
 from .forms import ClienteForm
