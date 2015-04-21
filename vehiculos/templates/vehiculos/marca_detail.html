@@ -11,9 +11,37 @@
 {% endblock %}
 
 {% block content %}
-<div class="col-md-6">
-	<ul class="list-group">
-		<li class="list-group-item"><strong>Nombre</strong><span class="pull-right">{{marca.nombre}}</span></li>
-	</ul>
+<div class="row">
+	<div class="col-md-6">
+		<ul class="list-group">
+			<li class="list-group-item"><strong>Nombre</strong><span class="pull-right">{{marca.nombre}}</span></li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<h2>
+			<form action="" method="GET" class="form-inline">
+				
+				Modelos <a href="{% url 'vehiculos:modelo_create' marca.id %}" class="btn btn-primary">Nuevo</a>
+
+				<input type="text" class="form-control" name="search" placeholder="Buscar" value="{% if search %}{{search}}{% endif %}">
+				<input type="submit" class="btn btn-default" value="Buscar">
+			</form>
+		</h2>
+
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<th>Nombre</th>
+				</tr>
+				{% for modelo in modelos %}
+				<tr>
+					<td><a href="{{modelo.get_absolute_url}}">{{modelo}}</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
 </div>
 {% endblock %}

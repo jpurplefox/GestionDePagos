@@ -11,12 +11,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="col-md-6">
-	<ul class="list-group">
-		<li class="list-group-item"><strong>Nombre</strong><span class="pull-right">{{cliente.nombre}}</span></li>
-		<li class="list-group-item"><strong>Apellido</strong><span class="pull-right">{{cliente.apellido}}</span></li>
-		<li class="list-group-item"><strong>DNI</strong><span class="pull-right">{{cliente.dni}}</span></li>
-	</ul>
-	<blockquote><strong>Observaciones</strong><p>{{cliente.observaciones}}</p></blockquote>
+<div class="row">
+	<div class="col-md-6">
+		<ul class="list-group">
+			<li class="list-group-item"><strong>Nombre</strong><span class="pull-right">{{cliente.nombre}}</span></li>
+			<li class="list-group-item"><strong>Apellido</strong><span class="pull-right">{{cliente.apellido}}</span></li>
+			<li class="list-group-item"><strong>DNI</strong><span class="pull-right">{{cliente.dni}}</span></li>
+		</ul>
+		<blockquote><strong>Observaciones</strong><p>{{cliente.observaciones}}</p></blockquote>
+	</div>
 </div>
 {% endblock %}
