@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head-title %}{{vehiculo}}{% endblock %}
+{% block body-title %}{{vehiculo}} <a href="{% url 'clientes:vehiculo_update' vehiculo.id %}" class="btn btn-primary">Editar</a>{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li class="active">{{vehiculo}}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-6">
+		<ul class="list-group">
+			<li class="list-group-item"><strong>Modelo</strong><span class="pull-right">{{vehiculo.modelo}}</span></li>
+			<li class="list-group-item"><strong>Año</strong><span class="pull-right">{{vehiculo.year}}</span></li>
+			<li class="list-group-item"><strong>Patente</strong><span class="pull-right">{{vehiculo.patente}}</span></li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
