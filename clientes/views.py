@@ -28,11 +28,6 @@ class ClienteUpdateView(UpdateView):
         messages.success(self.request, "El cliente {nombre} fue actualizado con éxito".format(nombre=self.object))
         return result
 
-class ClienteDetailView(DetailView):
-    model = Cliente
-    context_object_name = 'cliente'
-    template_name = 'clientes/cliente_detail.html'
-
 class ClienteListView(SearchMixin, ListView):
     model = Cliente
     context_object_name = 'clientes'

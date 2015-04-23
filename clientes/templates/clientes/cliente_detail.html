@@ -36,11 +36,17 @@
 		<div class="table-responsive">
 			<table class="table">
 				<tr>
+					<th>Marca</th>
 					<th>Modelo</th>
+					<th>Año</th>
+					<th>Patente</th>
 				</tr>
 				{% for vehiculo in vehiculos %}
 				<tr>
-					<td><a href="{{vehiculo.get_absolute_url}}">{{vehiculo}}</a></td>
+					<td>{{vehiculo.modelo.marca}}</td>
+					<td><a href="{{vehiculo.get_absolute_url}}">{{vehiculo.modelo}}</a></td>
+					<td>{{vehiculo.year}}</td>
+					<td>{{vehiculo.patente}}</td>
 				</tr>
 				{% endfor %}
 			</table>

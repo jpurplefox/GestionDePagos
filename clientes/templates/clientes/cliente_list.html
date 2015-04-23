@@ -18,12 +18,18 @@ Clientes <a href="{% url 'clientes:cliente_create' %}" class="btn btn-primary">N
 			<th>Nombre</th>
 			<th>Email</th>
 			<th>DNI</th>
+			<th>Vehiculos</th>
 		</tr>
 		{% for cliente in clientes %}
 		<tr>
 			<td><a href="{{cliente.get_absolute_url}}">{{cliente}}</a></td>
 			<td>{{cliente.email}}</td>
 			<td>{{cliente.dni}}</td>
+			<td>
+				{% for vehiculo in cliente.vehiculos.all %}
+					<span><a href="{{vehiculo.get_absolute_url}}">{{vehiculo.patente}}</a></span>
+				{% endfor %}
+			</td>
 		</tr>
 		{% endfor %}
 	</table>
