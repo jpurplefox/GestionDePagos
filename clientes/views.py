@@ -66,7 +66,7 @@ class VehiculoUpdateView(UpdateView):
 
     def form_valid(self, form):
         result = super(VehiculoUpdateView, self).form_valid(form)
-        messages.success(self.request, "El vehiculo {vehiculo} fue actualizado con éxito".format(nombre=self.object))
+        messages.success(self.request, "El vehiculo {vehiculo} fue actualizado con éxito".format(vehiculo=self.object))
         return result
 
 class VehiculoCreateView(CreateView):

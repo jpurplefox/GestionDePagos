@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from vehiculos.models import Modelo
+from django.core.validators import RegexValidator
 
 # Create your models here.
 class Cliente(models.Model):
@@ -24,7 +25,14 @@ class Vehiculo(models.Model):
     modelo = models.ForeignKey(Modelo, related_name='vehiculos')
     year = models.DecimalField(max_digits=4, decimal_places=0, verbose_name='Año')
     patente = models.CharField(
-        max_length=6
+        max_length=6,
+        validators=[
+            RegexValidator(
+                regex='^[a-zA-Z]{3}[0-9]{3}$',
+                message='La patente debe tener tres letras seguidas de tres numeros. Ejemplo "ABC123"',
+                code='invalid_patente'
+            ),
+        ]
     )
     foto = models.ImageField(upload_to="vehiculos/fotos", null=True, blank=True)
 

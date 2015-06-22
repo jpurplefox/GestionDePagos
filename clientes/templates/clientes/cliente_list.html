@@ -27,7 +27,7 @@ Clientes <a href="{% url 'clientes:cliente_create' %}" class="btn btn-primary">N
 			<td>{{cliente.dni}}</td>
 			<td>
 				{% for vehiculo in cliente.vehiculos.all %}
-					<span><a href="{{vehiculo.get_absolute_url}}">{{vehiculo.patente}}</a></span>
+					<span class="patente"><a href="{{vehiculo.get_absolute_url}}">{{vehiculo.patente|upper}}</a></span>
 				{% endfor %}
 			</td>
 		</tr>

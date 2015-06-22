@@ -5,6 +5,8 @@
 
 {% block breadcrumb %}
 <ol class="breadcrumb">
+	<li><a href="{% url 'clientes:cliente_list' %}">Clientes</a></li>
+	<li><a href="{{vehiculo.cliente.get_absolute_url}}">{{vehiculo.cliente}}</a></li>
 	<li class="active">{{vehiculo}}</li>
 </ol>
 {% endblock %}
