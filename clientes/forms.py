@@ -18,7 +18,8 @@ class VehiculoForm(forms.ModelForm):
         model = Vehiculo
         fields = ('modelo', 'year', 'patente')
         widgets = {
-            'modelo': forms.Select(attrs={'class': 'form-control'}),
+            'modelo': forms.Select(attrs={'class': 'form-control chosen-select', 'data-placeholder': 'Elija un modelo', 'tabindex': '2'}),
             'year': forms.NumberInput(attrs={'class': 'form-control'}),
             'patente': forms.TextInput(attrs={'class': 'form-control'}),
         }
+

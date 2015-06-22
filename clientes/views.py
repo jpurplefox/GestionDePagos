@@ -32,7 +32,7 @@ class ClienteListView(SearchMixin, ListView):
     model = Cliente
     context_object_name = 'clientes'
     template_name = 'clientes/cliente_list.html'
-    search_fields = ['nombre', 'apellido', 'email', 'dni']
+    search_fields = ['nombre', 'apellido', 'email', 'dni', 'vehiculos__patente']
 
 class ClienteDetailView(SearchMixin, ListView):
     model = Vehiculo
