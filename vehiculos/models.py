@@ -22,7 +22,7 @@ class Modelo(models.Model):
         ordering = ['nombre']
 
     def __str__(self):
-        return '{modelo} ( {marca} )'.format(modelo=self.nombre, marca=self.marca.nombre)
+        return '{modelo}'.format(modelo=self.nombre)
 
     def get_absolute_url(self):
         return reverse('vehiculos:modelo_detail', args=[self.id])
