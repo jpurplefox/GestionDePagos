@@ -1,4 +1,6 @@
 from django.db.models import Q
+from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 class SearchMixin():
     search_fields = []
@@ -21,3 +23,11 @@ class SearchMixin():
         context = super(SearchMixin, self).get_context_data(**kwargs)
         context['search'] = self.request.GET.get('search')
         return context
+
+class UpdateInactivoMixin():
+    def dispatch(self, request, *args, **kwargs):
+        objeto = self.get_object()
+        if not objeto.activo:
+            messages.error(self.request, "El objeto {objeto} no está activo por lo que no puede editarse".format(objeto=objeto))
+            return HttpResponseRedirect(objeto.get_absolute_url())
+        return super(UpdateInactivoMixin, self).dispatch(request, *args, **kwargs)

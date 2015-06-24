@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head-title %}{{cliente}}{% endblock %}
-{% block body-title %}{{cliente}} <a href="{% url 'clientes:cliente_update' cliente.id %}" class="btn btn-primary">Editar</a>{% endblock %}
+{% block body-title %}{{cliente}} {% if cliente.activo %}<a href="{% url 'clientes:cliente_update' cliente.id %}" class="btn btn-primary">Editar</a>{% endif %}{% endblock %}
 
 {% block breadcrumb %}
 <ol class="breadcrumb">
@@ -26,7 +26,7 @@
 		<h2>
 			<form action="" method="GET" class="form-inline">
 				
-				Vehiculos <a href="{% url 'clientes:vehiculo_create' cliente.id %}" class="btn btn-primary">Nuevo</a>
+				Vehiculos {% if cliente.activo %}<a href="{% url 'clientes:vehiculo_create' cliente.id %}" class="btn btn-primary">Nuevo</a>{% endif %}
 
 				<input type="text" class="form-control" name="search" placeholder="Buscar" value="{% if search %}{{search}}{% endif %}">
 				<input type="submit" class="btn btn-default" value="Buscar">
@@ -37,16 +37,14 @@
 			<table class="table">
 				<tr>
 					<th>Marca</th>
-					<th>Modelo</th>
+					<th>Vehiculo</th>
 					<th>Año</th>
-					<th>Patente</th>
 				</tr>
 				{% for vehiculo in vehiculos %}
 				<tr>
 					<td>{{vehiculo.modelo.marca}}</td>
-					<td><a href="{{vehiculo.get_absolute_url}}">{{vehiculo.modelo}}</a></td>
+					<td><a href="{{vehiculo.get_absolute_url}}">{{vehiculo}}</a></td>
 					<td>{{vehiculo.year}}</td>
-					<td>{{vehiculo.patente}}</td>
 				</tr>
 				{% endfor %}
 			</table>

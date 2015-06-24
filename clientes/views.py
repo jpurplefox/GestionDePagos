@@ -2,10 +2,12 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 from .models import Cliente, Vehiculo
 from .forms import ClienteForm, VehiculoForm
-from Talleres.mixins import SearchMixin
+from Talleres.mixins import SearchMixin, UpdateInactivoMixin
 
 # Create your views here.
 class ClienteCreateView(CreateView):
@@ -18,7 +20,7 @@ class ClienteCreateView(CreateView):
         messages.success(self.request, "El cliente {nombre} fue creado con éxito".format(nombre=self.object))
         return result
 
-class ClienteUpdateView(UpdateView):
+class ClienteUpdateView(UpdateInactivoMixin, UpdateView):
     model = Cliente
     form_class = ClienteForm
     template_name = 'clientes/cliente_form.html'
@@ -59,7 +61,7 @@ class VehiculoDetailView(DetailView):
     context_object_name = 'vehiculo'
     template_name = 'clientes/vehiculo_detail.html'
 
-class VehiculoUpdateView(UpdateView):
+class VehiculoUpdateView(UpdateInactivoMixin, UpdateView):
     model = Vehiculo
     form_class = VehiculoForm
     template_name = 'clientes/vehiculo_form.html'
@@ -74,11 +76,17 @@ class VehiculoCreateView(CreateView):
     form_class = VehiculoForm
     template_name = 'clientes/vehiculo_form.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        cliente_pk = self.kwargs['cliente_id']
+        self.cliente = get_object_or_404(Cliente, pk=cliente_pk)
+        if not self.cliente.activo:
+            messages.error(self.request, "El cliente {cliente} no está activo por lo que no se le pueden agregar vehiculos".format(cliente=self.cliente))
+            return HttpResponseRedirect(self.cliente.get_absolute_url())
+        return super(VehiculoCreateView, self).dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super(VehiculoCreateView, self).get_context_data(**kwargs)
-        cliente_pk = self.kwargs['cliente_id']
-        cliente = get_object_or_404(Cliente, pk=cliente_pk)
-        context['cliente'] = cliente
+        context['cliente'] = self.cliente
         return context
 
     def form_valid(self, form):
