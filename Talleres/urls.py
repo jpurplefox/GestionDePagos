@@ -6,5 +6,4 @@ urlpatterns = patterns('',
     url(r'^$', HomeView.as_view(), name='index'),
     #url(r'^admin/', include(admin.site.urls)),
     url(r'^clientes/', include('clientes.urls', namespace='clientes')),
-    url(r'^vehiculos/', include('vehiculos.urls', namespace='vehiculos')),
 )

@@ -39,7 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap',
     'clientes',
-    'vehiculos',
 )
 
 TEMPLATE_DIRS = (
@@ -58,9 +57,9 @@ MIDDLEWARE_CLASSES = (
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+TEMPLATE_CONTEXT_PROCESSORS = TCP + [
   'django.core.context_processors.static',
-)
+]
 
 ROOT_URLCONF = 'Talleres.urls'
 

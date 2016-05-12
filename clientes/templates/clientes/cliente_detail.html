@@ -17,39 +17,10 @@
 			<li class="list-group-item"><strong>Nombre</strong><span class="pull-right">{{cliente.nombre}}</span></li>
 			<li class="list-group-item"><strong>Apellido</strong><span class="pull-right">{{cliente.apellido}}</span></li>
 			<li class="list-group-item"><strong>DNI</strong><span class="pull-right">{{cliente.dni}}</span></li>
+            <li class="list-group-item"><strong>Email</strong><span class="pull-right">{{cliente.email}}</span></li>
+	    	<li class="list-group-item"><strong>Telefono</strong><span class="pull-right">{{cliente.telefono}}</span></li>
 		</ul>
 		<blockquote><strong>Observaciones</strong><p>{{cliente.observaciones}}</p></blockquote>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-6">
-		<h2>
-			<form action="" method="GET" class="form-inline">
-				
-				Vehiculos {% if cliente.activo %}<a href="{% url 'clientes:vehiculo_create' cliente.id %}" class="btn btn-primary">Nuevo</a>{% endif %}
-
-				<input type="text" class="form-control" name="search" placeholder="Buscar" value="{% if search %}{{search}}{% endif %}">
-				<input type="submit" class="btn btn-default" value="Buscar">
-			</form>
-		</h2>
-
-		<div class="table-responsive">
-			<table class="table">
-				<tr>
-					<th>Marca</th>
-					<th>Vehiculo</th>
-					<th>Año</th>
-				</tr>
-				{% for vehiculo in vehiculos %}
-				<tr>
-					<td>{{vehiculo.modelo.marca}}</td>
-					<td><a href="{{vehiculo.get_absolute_url}}">{{vehiculo}}</a></td>
-					<td>{{vehiculo.year}}</td>
-				</tr>
-				{% endfor %}
-			</table>
-		</div>
-		{% include 'helpers/pagination.html' %}
 	</div>
 </div>
 {% endblock %}

@@ -1,16 +1,3 @@
-.patente {
-	background-color: #101010;
-	border-radius: 7px;
-	padding: 7px;
-	width: 5em;
-	display: inline-block;
-	text-align: center;
-}
-
-.patente a {
-	color: #FFFFFF;
-}
-
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 	vertical-align: middle;
 }
