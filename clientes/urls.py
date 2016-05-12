@@ -8,6 +8,8 @@ urlpatterns = [
     url(r'^cliente/(?P<pk>[0-9]+)/edit/$', views.ClienteUpdateView.as_view(), name='cliente_update'),
     url(r'^cliente/new/$', views.ClienteCreateView.as_view(), name='cliente_create'),
 
+    url(r'^json/clientes/$', views.clientes_json, name='cliente_list_json'),
+
     #Vehiculos
     url(r'^vehiculo/(?P<pk>[0-9]+)/$', views.VehiculoDetailView.as_view(), name='vehiculo_detail'),
     url(r'^vehiculo/(?P<pk>[0-9]+)/edit/$', views.VehiculoUpdateView.as_view(), name='vehiculo_update'),

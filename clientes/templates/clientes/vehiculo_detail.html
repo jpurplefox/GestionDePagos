@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head-title %}{{vehiculo}}{% endblock %}
-{% block body-title %}{{vehiculo}} {% if cliente.activo %}<a href="{% url 'clientes:vehiculo_update' vehiculo.id %}" class="btn btn-primary">Editar</a>{% endif %}{% endblock %}
+{% block body-title %}{{vehiculo}} {% if vehiculo.activo %}<a href="{% url 'clientes:vehiculo_update' vehiculo.id %}" class="btn btn-primary">Editar</a>{% endif %}{% endblock %}
 
 {% block breadcrumb %}
 <ol class="breadcrumb">

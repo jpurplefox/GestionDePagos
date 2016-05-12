@@ -2,8 +2,9 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.core.urlresolvers import reverse
+from django.core import serializers
 
 from .models import Cliente, Vehiculo
 from .forms import ClienteForm, VehiculoForm
@@ -35,12 +36,14 @@ class ClienteListView(SearchMixin, ListView):
     context_object_name = 'clientes'
     template_name = 'clientes/cliente_list.html'
     search_fields = ['nombre', 'apellido', 'email', 'dni', 'vehiculos__patente']
+    paginate_by = 10
 
 class ClienteDetailView(SearchMixin, ListView):
     model = Vehiculo
     context_object_name = 'vehiculos'
     template_name = 'clientes/cliente_detail.html'
     search_fields = ['modelo__nombre', 'patente']
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super(ClienteDetailView, self).get_queryset()
@@ -54,6 +57,12 @@ class ClienteDetailView(SearchMixin, ListView):
         cliente = get_object_or_404(Cliente, pk=cliente_pk)
         context['cliente'] = cliente
         return context
+
+def clientes_json(request):
+    clientes = serializers.serialize('json', Cliente.objects.all(), indent=2)
+    return HttpResponse(clientes, content_type='application/json')
+    #clientes = Cliente.objects.all()
+    #return JsonResponse(clientes, encoder=serializers)
 
 #Vehiculos
 class VehiculoDetailView(DetailView):

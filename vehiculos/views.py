@@ -34,6 +34,7 @@ class MarcaDetailView(SearchMixin, ListView):
     context_object_name = 'modelos'
     template_name = 'vehiculos/marca_detail.html'
     search_fields = ['nombre',]
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super(MarcaDetailView, self).get_queryset()
@@ -53,6 +54,7 @@ class MarcaListView(SearchMixin, ListView):
     context_object_name = 'marcas'
     template_name = 'vehiculos/marca_list.html'
     search_fields = ['nombre',]
+    paginate_by = 10
 
 #Modelo
 class ModeloCreateView(CreateView):
