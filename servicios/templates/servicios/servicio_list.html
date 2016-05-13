@@ -1,0 +1,28 @@
+{% extends 'base/base_list.html' %}
+
+{% block head-title %} Servicios {% endblock %}
+{% block list-title %}
+Servicios <a href="{% url 'servicios:servicio_create' %}" class="btn btn-primary">Nuevo</a>
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li class="active">Servicios</li>
+</ol>
+{% endblock %}
+
+{% block list_table %}
+<div class="table-responsive">
+	<table class="table">
+		<tr>
+			<th>Descripcion</th>
+		</tr>
+		{% for servicio in servicios %}
+		<tr>
+			<td><a href="{{servicio.get_absolute_url}}">{{servicio}}</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+{% include 'helpers/pagination.html' %}
+{% endblock %}

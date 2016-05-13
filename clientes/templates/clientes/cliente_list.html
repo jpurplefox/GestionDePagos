@@ -27,6 +27,6 @@ Clientes <a href="{% url 'clientes:cliente_create' %}" class="btn btn-primary">N
 		</tr>
 		{% endfor %}
 	</table>
-	{% include 'helpers/pagination.html' %}
 </div>
+{% include 'helpers/pagination.html' %}
 {% endblock %}

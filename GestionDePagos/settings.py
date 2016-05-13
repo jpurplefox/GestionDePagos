@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap',
     'clientes',
+    'servicios',
 )
 
 TEMPLATE_DIRS = (

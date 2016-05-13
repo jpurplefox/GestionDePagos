@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head-title %}{{servicio}}{% endblock %}
+{% block body-title %}{{servicio}} {% if servicio.activo %}<a href="{% url 'servicios:servicio_update' servicio.id %}" class="btn btn-primary">Editar</a>{% endif %}{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li><a href="{% url 'servicios:servicio_list' %}">Servicios</a></li>
+	<li class="active">{{servicio}}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-6">
+		<ul class="list-group">
+			<li class="list-group-item"><strong>Descripcion</strong><span class="pull-right">{{servicio.descripcion}}</span></li>
+			<li class="list-group-item"><strong>Se cobra por hora</strong><span class="pull-right">{%if servicio.se_cobra_por_hora%}Si{%else%}No{%endif%}</span></li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
