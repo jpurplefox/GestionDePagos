@@ -8,7 +8,7 @@ from django.core import serializers
 
 from .models import Cliente
 from .forms import ClienteForm
-from Talleres.mixins import SearchMixin, UpdateInactivoMixin
+from GestionDePagos.mixins import SearchMixin, UpdateInactivoMixin
 
 # Create your views here.
 class ClienteCreateView(CreateView):

@@ -20,7 +20,7 @@
             <li class="list-group-item"><strong>Email</strong><span class="pull-right">{{cliente.email}}</span></li>
 	    	<li class="list-group-item"><strong>Telefono</strong><span class="pull-right">{{cliente.telefono}}</span></li>
 		</ul>
-		<blockquote><strong>Observaciones</strong><p>{{cliente.observaciones}}</p></blockquote>
+		<blockquote><strong>Observaciones</strong><p>{{cliente.observaciones|linebreaks}}</p></blockquote>
 	</div>
 </div>
 {% endblock %}

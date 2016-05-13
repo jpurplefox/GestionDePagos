@@ -42,7 +42,7 @@ INSTALLED_APPS = (
 )
 
 TEMPLATE_DIRS = (
-    'Talleres/templates/',
+    'GestionDePagos/templates/',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,9 +61,9 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + [
   'django.core.context_processors.static',
 ]
 
-ROOT_URLCONF = 'Talleres.urls'
+ROOT_URLCONF = 'GestionDePagos.urls'
 
-WSGI_APPLICATION = 'Talleres.wsgi.application'
+WSGI_APPLICATION = 'GestionDePagos.wsgi.application'
 
 
 # Database
