@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'bootstrap',
     'clientes',
     'servicios',
+    'presupuestos',
 )
 
 TEMPLATE_DIRS = (
