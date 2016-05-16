@@ -7,4 +7,5 @@ urlpatterns = [
     #url(r'^admin/', include(admin.site.urls)),
     url(r'^clientes/', include('clientes.urls', namespace='clientes')),
     url(r'^servicios/', include('servicios.urls', namespace='servicios')),
+    url(r'^presupuestos/', include('presupuestos.urls', namespace='presupuestos')),
 ]

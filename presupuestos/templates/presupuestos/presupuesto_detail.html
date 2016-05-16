@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head-title %}{{presupuesto}}{% endblock %}
+{% block body-title %}{{presupuesto}} <a href="{% url 'presupuestos:update' presupuesto.id %}" class="btn btn-primary">Editar</a>{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li><a href="{% url 'presupuestos:list' %}">Presupuestos</a></li>
+	<li class="active">{{presupuesto}}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-6">
+		<ul class="list-group">
+			<li class="list-group-item"><strong>Numero</strong><span class="pull-right">{{presupuesto.id}}</span></li>
+			<li class="list-group-item"><strong>Fecha</strong><span class="pull-right">{{presupuesto.fecha}}</span></li>
+			<li class="list-group-item"><strong>Validez</strong><span class="pull-right">{{presupuesto.validez}}</span></li>
+            <li class="list-group-item"><strong>Cliente</strong><span class="pull-right">{{presupuesto.cliente}}</span></li>
+		</ul>
+		<blockquote><strong>Observaciones</strong><p>{{presupuesto.observaciones|linebreaks}}</p></blockquote>
+	</div>
+</div>
+{% endblock %}

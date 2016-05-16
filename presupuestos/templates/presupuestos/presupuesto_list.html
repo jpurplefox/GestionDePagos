@@ -1,0 +1,36 @@
+{% extends 'base/base_list.html' %}
+
+{% block head-title %} Presupuestos {% endblock %}
+{% block list-title %}
+Clientes <a href="{% url 'presupuestos:create' %}" class="btn btn-primary">Nuevo</a>
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li class="active">Presupuestos</li>
+</ol>
+{% endblock %}
+
+{% block list_table %}
+<div class="table-responsive">
+	<table class="table">
+		<tr>
+			<th>Numero</th>
+			<th>Fecha</th>
+            <th>Validez</th>
+            <th>Cliente</th>
+            <th>Total</th>
+		</tr>
+		{% for presupuesto in presupuestos %}
+		<tr>
+			<td><a href="{{presupuesto.get_absolute_url}}">{{presupuesto.id}}</a></td>
+			<td>{{presupuesto.fecha}}</td>
+			<td>{{presupuesto.validez}}</td>
+			<td>{{presupuesto.cliente}}</td>
+			<td>{{presupuesto.total}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+{% include 'helpers/pagination.html' %}
+{% endblock %}
