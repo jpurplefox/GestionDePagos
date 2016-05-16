@@ -5,9 +5,11 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.core.urlresolvers import reverse
 from django.core import serializers
+from rest_framework import generics
 
 from .models import Cliente
 from .forms import ClienteForm
+from .serializers import ClienteSerializer
 from GestionDePagos.mixins import SearchMixin, UpdateInactivoMixin
 
 # Create your views here.
@@ -43,8 +45,13 @@ class ClienteDetailView(DetailView):
     context_object_name = 'cliente'
     template_name = 'clientes/cliente_detail.html'
 
-def clientes_json(request):
-    clientes = serializers.serialize('json', Cliente.objects.all(), indent=2)
-    return HttpResponse(clientes, content_type='application/json')
-    #clientes = Cliente.objects.all()
-    #return JsonResponse(clientes, encoder=serializers)
+class ClienteAPIList(generics.ListCreateAPIView):
+    model = Cliente
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+
+class ClienteAPIDetail(generics.RetrieveAPIView):
+    model = Cliente
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+

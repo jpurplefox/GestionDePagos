@@ -7,4 +7,6 @@ urlpatterns = [
     url(r'^/(?P<pk>[0-9]+)$', views.ServicioDetailView.as_view(), name='servicio_detail'),
     url(r'^/(?P<pk>[0-9]+)/edit$', views.ServicioUpdateView.as_view(), name='servicio_update'),
     url(r'^/new$', views.ServicioCreateView.as_view(), name='servicio_create'),
+    url(r'^/API$', views.ServicioAPIList.as_view(), name='API_servicio_list'),
+    url(r'^/API/(?P<pk>[0-9]+)$', views.ServicioAPIDetail.as_view(), name='API_servicio_detail'),
 ]

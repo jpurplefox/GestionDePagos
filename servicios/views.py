@@ -4,9 +4,11 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.core.urlresolvers import reverse
+from rest_framework import generics
 
 from .models import Servicio
 from .forms import ServicioForm
+from .serializers import ServicioSerializer
 from GestionDePagos.mixins import SearchMixin, UpdateInactivoMixin
 
 # Create your views here.
@@ -41,3 +43,14 @@ class ServicioDetailView(DetailView):
     model = Servicio
     context_object_name = 'servicio'
     template_name = 'servicios/servicio_detail.html'
+
+class ServicioAPIList(generics.ListCreateAPIView):
+    model = Servicio
+    queryset = Servicio.objects.all()
+    serializer_class = ServicioSerializer
+
+class ServicioAPIDetail(generics.RetrieveAPIView):
+    model = Servicio
+    queryset = Servicio.objects.all()
+    serializer_class = ServicioSerializer
+
